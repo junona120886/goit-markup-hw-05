@@ -25,7 +25,9 @@
           <nav class="navigation">
             <ul class="navigation-list">
               <li class="navigation-item">
-                <a href="./index.html" class="navigation-link">Студия</a>
+                <a href="./index.html" class="navigation-link current"
+                  >Студия</a
+                >
               </li>
               <li class="navigation-item">
                 <a href="./portfolio.html" class="navigation-link">Портфолио</a>
@@ -43,7 +45,7 @@
                     href="./images/icons/symbol-defs.svg#icon-envelope"
                   ></use>
                 </svg>
-                info@devstudio.com</a
+                <span class="contacts-link-text"> info@devstudio.com </span></a
               >
             </li>
             <li class="contacts-item">
@@ -53,7 +55,7 @@
                     href="./images/icons/symbol-defs.svg#icon-smartphone"
                   ></use>
                 </svg>
-                +38 096 111 11 11</a
+                <span class="contacts-link-text">+38 096 111 11 11 </span></a
               >
             </li>
           </ul>
@@ -68,7 +70,11 @@
             Эффективные решения <br />
             для вашего бизнеса
           </h1>
-          <button type="button" class="button-base button-order">
+          <button
+            type="button"
+            class="button-base button-order"
+            data-modal-open
+          >
             Заказать услугу
           </button>
         </div>
@@ -154,6 +160,9 @@
                   src="./images/1.jpg"
                   alt="Руки на клавиатуре пишут программный код"
                 />
+                <div class="about-title-block">
+                  <h3 class="about-title">Десктопные приложения</h3>
+                </div>
               </div>
             </li>
             <li class="about-item">
@@ -162,6 +171,9 @@
                   src="./images/2.jpg"
                   alt="Создание прототипа приложения на экране монитора"
                 />
+                <div class="about-title-block">
+                  <h3 class="about-title">Мобильные приложения</h3>
+                </div>
               </div>
             </li>
             <li class="about-item">
@@ -170,6 +182,9 @@
                   src="./images/3.jpg"
                   alt="Выбор цветовой модели на графическом планшете"
                 />
+                <div class="about-title-block">
+                  <h3 class="about-title">Дизайнерские решения</h3>
+                </div>
               </div>
             </li>
           </ul>
@@ -546,5 +561,16 @@
         </div>
       </div>
     </footer>
+    <!--<div class="back-drop is-hidden" data-modal>-->
+    <div class="back-drop" data-modal>
+      <div class="modal">
+        <button type="button" class="modal-close" data-modal-close>
+          <svg class="modal-close-icon" width="10" height="10">
+            <use href="./images/icons/close.svg"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <script src="./modal.js"></script>
   </body>
 </html>

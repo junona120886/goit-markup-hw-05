@@ -66,6 +66,9 @@ ul {
 address {
   font-style: normal;
 }
+img {
+  display: block;
+}
 .header {
   padding-top: 25px;
   padding-bottom: 25px;
@@ -98,6 +101,7 @@ address {
 }
 /*icons*/
 .contacts-icon {
+  display: block;
   width: 16px;
   height: 16px;
 
@@ -135,16 +139,17 @@ address {
 }
 /*навигация*/
 .header-content {
-  align-items: baseline;
+  outline: 1px solid red;
 }
 .navigation {
+  display: block;
   color: var(--secondary-text-color);
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
 
-  /*outline: 1px solid red;*/
+  outline: 1px solid red;
 }
 .navigation-list {
   display: flex;
@@ -152,6 +157,9 @@ address {
 
   margin: 0;
   padding: 0;
+}
+.navigation-list .navigation-item {
+  position: relative;
 }
 /*Спосіб №1 Як позбутись крайньої геометрії*/
 .navigation-item:not(:last-child) {
@@ -174,7 +182,6 @@ address {
   display: block;
   /*padding-top: 32px;
   padding-bottom: 32px;*/
-
   color: var(--secondary-text-color);
   text-decoration: none;
 
@@ -186,20 +193,34 @@ address {
 .navigation-link:focus {
   color: var(--accent-color);
 }
+.current::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border: 2px solid var(--accent-color);
+  border-radius: 2px;
+  background-color: var(--accent-color);
+}
+
 /*контакты*/
 .contacts-list {
   display: flex;
   align-items: center;
   margin-left: auto;
+
+  outline: 1px solid red;
 }
-.contacts-item {
-  display: flex;
-}
+/*.contacts-item {
+  
+}*/
 .contacts-item:not(:last-child) {
   margin-right: 50px;
 }
 .contacts-link {
-  display: block;
+  display: flex;
+  justify-content: center;
   /* padding-top: 32px;
   padding-bottom: 32px;*/
 
@@ -220,7 +241,9 @@ address {
 .contacts-link:focus {
   color: var(--accent-color);
 }
-
+.contacts-link-text {
+  display: block;
+}
 /*hero*/
 .hero {
   padding-top: 200px;
@@ -236,7 +259,7 @@ address {
   background-repeat: no-repeat;
   background-size: cover;
 
-  /*outline: 1px solid red;*/
+  outline: 1px solid red;
 }
 .hero-title {
   color: var(--primary-white);
@@ -358,7 +381,30 @@ address {
   margin-right: 30px;
 }
 .about-content {
+  position: relative;
   width: 370px;
+}
+.about-title-block {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  min-height: 70px;
+
+  margin: 0;
+  background-color: rgba(47, 48, 58, 0.8);
+}
+.about-title {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  color: var(--primary-white);
+  margin: auto;
 }
 /*team*/
 .team {
@@ -578,6 +624,53 @@ address {
 .footer-social-item:not(:last-child) {
   margin-right: 10px;
 }
+.back-drop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.back-drop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 530px;
+  min-height: 580px;
+  background-color: #fff;
+}
+.modal-close {
+  position: absolute;
+  display: flex;
+  top: 10px;
+  right: 10px;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+  margin: 0;
+
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  cursor: pointer;
+}
+.modal-close-icon {
+  width: 10px;
+  height: 10px;
+}
 /*portfolio.html*/
 .portfolio {
   padding-top: 95px;
@@ -629,7 +722,9 @@ address {
   margin-top: -30px;
 }
 .portfolio-item {
+  display: block;
   box-sizing: border-box;
+
   width: 370px;
   max-height: 405px;
   border: 1px solid #eeeeee;
@@ -649,6 +744,7 @@ address {
 
   /*outline: 1px solid red;*/
 }
+
 .portfolio-item:hover,
 .portfolio-item:focus {
   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
@@ -686,5 +782,71 @@ address {
 }
 .portfolio-item-link {
   display: block;
+  /* position: relative;*/
   text-decoration: none;
+}
+.product-photo-thmb {
+  position: relative;
+  display: block;
+  overflow: hidden;
+
+  /* justify-content: center;
+  align-items: center;*/
+}
+.product-photo-thmb::before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 150, 243, 0.9);
+
+  transform: translateY(100%);
+  transition: transform 250ms linear;
+
+  opacity: 0;
+}
+.portfolio-text-thmb {
+  position: absolute;
+  display: flex;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+.portfolio-item-text {
+  display: block;
+
+  color: var(--primary-white);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.75;
+  letter-spacing: 0.03em;
+  text-align: left;
+
+  transform: translateY(100%);
+  transition: transform 250ms linear;
+
+  overflow: hidden;
+  opacity: 0;
+}
+
+/*.portfolio-item:hover .product-photo-thmb::before {
+ 
+}*/
+.portfolio-item:hover .product-photo-thmb::before,
+.portfolio-item:hover .portfolio-item-text {
+  opacity: 1;
+  transform: translateY(0);
 }
