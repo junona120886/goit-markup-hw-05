@@ -72,19 +72,23 @@ img {
 .header {
   padding-top: 25px;
   padding-bottom: 25px;
+  min-height: 80px;
 
   border-bottom: 1px solid #ececec;
   /*outline: 1px solid red;*/
 }
 .main-container {
   width: 1200px;
+
   padding-left: 15px;
   padding-right: 15px;
+
   margin-left: auto;
   margin-right: auto;
+
   /* align-items: center; - не працює, бо не flex*/
 
-  /* outline: 1px solid red;*/
+  /*outline: 1px solid red;*/
 }
 .flex-container {
   display: flex;
@@ -120,6 +124,7 @@ img {
 }*/
 
 /*index.html*/
+/*header*/
 /*логотип*/
 .logo {
   display: inline-block;
@@ -139,28 +144,37 @@ img {
 }
 /*навигация*/
 .header-content {
-  outline: 1px solid red;
+  display: flex;
+  /* align-items: stretch;*/
+  align-items: center;
+  /*outline: 1px solid red;*/
 }
 .navigation {
-  display: block;
+  display: flex;
+  width: 100%;
+
+  align-items: center;
+
   color: var(--secondary-text-color);
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
 
-  outline: 1px solid red;
+  /*outline: 1px solid navy;*/
 }
 .navigation-list {
   display: flex;
+  width: 100%;
+
   align-items: center;
 
   margin: 0;
   padding: 0;
+  /*outline: 1px solid red;*/
 }
-.navigation-list .navigation-item {
-  position: relative;
-}
+/*.navigation-list .navigation-item {
+}*/
 /*Спосіб №1 Як позбутись крайньої геометрії*/
 .navigation-item:not(:last-child) {
   margin-right: 50px;
@@ -178,8 +192,10 @@ img {
 .navigation-item + .navigation-item {
   margin-left: 50px;
 }*/
+
 .navigation-link {
   display: block;
+  position: relative;
   /*padding-top: 32px;
   padding-bottom: 32px;*/
   color: var(--secondary-text-color);
@@ -196,7 +212,7 @@ img {
 .current::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -34px;
   left: 0;
   width: 100%;
   border: 2px solid var(--accent-color);
@@ -207,10 +223,12 @@ img {
 /*контакты*/
 .contacts-list {
   display: flex;
+  width: 100%;
+
   align-items: center;
   margin-left: auto;
 
-  outline: 1px solid red;
+  /*outline: 1px solid red;*/
 }
 /*.contacts-item {
   
@@ -259,7 +277,7 @@ img {
   background-repeat: no-repeat;
   background-size: cover;
 
-  outline: 1px solid red;
+  /* outline: 1px solid red;*/
 }
 .hero-title {
   color: var(--primary-white);
@@ -645,7 +663,10 @@ img {
 
   min-width: 530px;
   min-height: 580px;
-  background-color: #fff;
+  background-color: rgba(24, 140, 232, 0.3);
+
+  transition-property: background-color;
+  transition-duration: 1500ms;
 }
 .modal-close {
   position: absolute;
@@ -667,10 +688,14 @@ img {
   background-color: #fff;
   cursor: pointer;
 }
-.modal-close-icon {
-  width: 10px;
-  height: 10px;
+.modal:hover {
+  background-color: #fff;
 }
+.modal-close-icon {
+  width: 11px;
+  height: 11px;
+}
+
 /*portfolio.html*/
 .portfolio {
   padding-top: 95px;
